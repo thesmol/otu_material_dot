@@ -2,10 +2,12 @@ import React, { useState } from "react"
 
 import './App.css';
 import Settings from './components/Settings';
+import Canvas from './components/Canvas';
 
 function App() {
   const [chartType, setChartType] = useState('os');
   const [startChart, setStartChart] = useState(false);
+
   return (
     <div
       style={{
@@ -22,6 +24,9 @@ function App() {
         chartType={chartType}
         setChartType={setChartType}
         setStartChart={setStartChart}
+      />
+      <Canvas
+        chartData={chartData}
       />
     </div>
   );
