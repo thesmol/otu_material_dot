@@ -71,7 +71,15 @@ const feedbackСontrol = (T) => {
         v: v,
         u: u,
         xExt: xExt,
-        LL: LL
+        LL: LL,
+        names: [
+            'Управление материальной точкой методом обратной связи',
+            'V(x)',
+            "LL'(x)",
+            "V(t)",
+            "U(t)",
+            "X(t)",
+        ]
     }
 }
 export const chartData = feedbackСontrol(T);
