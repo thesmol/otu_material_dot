@@ -1,28 +1,42 @@
 import React from "react";
-const renderSubChart = (count) => (
-    <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        height: '100%',
-        width: '37%'
-    }}>
-        {Array.from({ length: count }, (_, i) => (
-            <div key={i}
-                style={{
-                    height: '32%',
-                    backgroundColor: '#e2caae',
-                    borderRadius: '15px',
-                    width: '100%'
-                }}>
+import LineChart from './LineChart';
 
-            </div>
-        ))}
-    </div>
-);
+const renderSubCharts = (count, data, names) => {
+    const processedNames = names.map((name, i) => 
+        i === 0 ? '' : name 
+    );
 
-const Canvas = ({ chartData }) => {
+    return (
+        <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            height: '100%',
+            width: '37%'
+        }}>
+            {Array.from({ length: count }, (_, i) => (
+                <div key={i}
+                    style={{
+                        height: '32%',
+                        backgroundColor: '#e2caae',
+                        borderRadius: '15px',
+                        width: '100%'
+                    }}>
+                    <LineChart
+                        names={[processedNames[0], processedNames[i + 3]]}
+                        x1={data[i][0]}
+                        y1={data[i][1]}
+                    />
+                </div>
+            ))}
+        </div>
+    )
+
+};
+
+const Canvas = ({ chartData, startChart }) => {
+
     return (
         <div
             style={{
@@ -41,10 +55,24 @@ const Canvas = ({ chartData }) => {
                 width: '60%',
                 backgroundColor: '#e2caae',
                 borderRadius: '15px',
+                position: 'relative'
             }}>
+                <LineChart
+                    names={chartData.names}
+                    x1={chartData.x}
+                    y1={chartData.v}
+                    x2={chartData.xExt}
+                    y2={chartData.LL}
+                />
             </div>
 
-            {renderSubChart(3)}
+            {
+                renderSubCharts(
+                    3,
+                    [[chartData.T, chartData.v], [chartData.T, chartData.u], [chartData.T, chartData.x]],
+                    chartData.names
+                )
+            }
         </div>
     )
 };
