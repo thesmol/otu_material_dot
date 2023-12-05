@@ -1,5 +1,6 @@
 import React from "react";
 import LineChart from './LineChart';
+import ChartComponent from './ChartComponent';
 
 const renderSubCharts = (count, data, names) => {
     const processedNames = names.map((name, i) => 
@@ -57,13 +58,14 @@ const Canvas = ({ chartData, startChart }) => {
                 borderRadius: '15px',
                 position: 'relative'
             }}>
-                <LineChart
+                {/* <LineChart
                     names={chartData.names}
                     x1={chartData.x}
                     y1={chartData.v}
                     x2={chartData.xExt}
                     y2={chartData.LL}
-                />
+                /> */}
+                <ChartComponent />
             </div>
 
             {

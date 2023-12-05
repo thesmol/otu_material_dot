@@ -7,8 +7,8 @@ import {
     LinearScale,
     PointElement,
     Legend,
-    Title
-} from 'chart.js'
+    Title,
+} from 'chart.js';
 
 ChartJS.register(
     LineController,
