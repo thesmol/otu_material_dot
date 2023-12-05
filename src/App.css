@@ -5,12 +5,19 @@
 }
 
 button {
-    border: 2px solid #2c1b09; /* Установка цвета и ширины границы */
-    transition: all 0.3s ease; /* Добавление анимации перехода */
+    border: 2px solid #2c1b09;
+    transition: all 0.3s ease;
     background-color: #8b351c;
 }
 
 button:hover {
     background-color: #2c1b09;
-    border: 2px solid #8b351c; 
+    border: 2px solid #8b351c;
+}
+
+canvas {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
