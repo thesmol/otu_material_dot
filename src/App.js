@@ -3,6 +3,8 @@ import React, { useState } from "react"
 import './App.css';
 import Settings from './components/Settings';
 import Canvas from './components/Canvas';
+import { chartData } from "./data";
+
 
 function App() {
   const [chartType, setChartType] = useState('os');
@@ -27,6 +29,8 @@ function App() {
       />
       <Canvas
         chartData={chartData}
+        chartType = {chartType}
+        startChart = {startChart}
       />
     </div>
   );
