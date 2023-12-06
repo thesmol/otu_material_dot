@@ -82,4 +82,10 @@ const feedbackСontrol = (T) => {
         ]
     }
 }
+
+
+const programControl = () => {
+
+}
+
 export const chartData = feedbackСontrol(T);
