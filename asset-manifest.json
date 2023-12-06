@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/otu_material_dot/static/css/main.04905d94.css",
+    "main.js": "/otu_material_dot/static/js/main.df69befd.js",
+    "static/js/787.e7848d40.chunk.js": "/otu_material_dot/static/js/787.e7848d40.chunk.js",
+    "index.html": "/otu_material_dot/index.html",
+    "main.04905d94.css.map": "/otu_material_dot/static/css/main.04905d94.css.map",
+    "main.df69befd.js.map": "/otu_material_dot/static/js/main.df69befd.js.map",
+    "787.e7848d40.chunk.js.map": "/otu_material_dot/static/js/787.e7848d40.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.04905d94.css",
+    "static/js/main.df69befd.js"
+  ]
+}
