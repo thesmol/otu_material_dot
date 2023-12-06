@@ -1,10 +1,9 @@
 import React from "react";
-import LineChart from './LineChart';
 import ChartComponent from './ChartComponent';
 
 const renderSubCharts = (count, data, names) => {
-    const processedNames = names.map((name, i) => 
-        i === 0 ? '' : name 
+    const processedNames = names.map((name, i) =>
+        i === 0 ? '' : name
     );
 
     return (
@@ -24,7 +23,7 @@ const renderSubCharts = (count, data, names) => {
                         borderRadius: '15px',
                         width: '100%'
                     }}>
-                    <LineChart
+                    <ChartComponent
                         names={[processedNames[0], processedNames[i + 3]]}
                         x1={data[i][0]}
                         y1={data[i][1]}
@@ -58,14 +57,13 @@ const Canvas = ({ chartData, startChart }) => {
                 borderRadius: '15px',
                 position: 'relative'
             }}>
-                {/* <LineChart
+                <ChartComponent
                     names={chartData.names}
                     x1={chartData.x}
                     y1={chartData.v}
                     x2={chartData.xExt}
                     y2={chartData.LL}
-                /> */}
-                <ChartComponent />
+                />
             </div>
 
             {
