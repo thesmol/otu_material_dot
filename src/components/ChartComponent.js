@@ -23,7 +23,7 @@ Chart.register(
 );
 
 
-const ChartComponent = ({ names, x1, y1, x2, y2 }) => {
+const ChartComponent = ({ names, x1, y1, x2, y2, reload }) => {
     const chartRef = useRef(null);
     const chartInstanceRef = useRef(null);
     const [data, setData] = useState([]);
@@ -40,7 +40,7 @@ const ChartComponent = ({ names, x1, y1, x2, y2 }) => {
             });
             setData2(newData2);
         }
-        
+
         setData(newData);
     }, []);
 
@@ -51,7 +51,7 @@ const ChartComponent = ({ names, x1, y1, x2, y2 }) => {
         radius: 0,
         data: data,
     }];
-    
+
     if (x2 && y2) {
         datasets.push({
             label: names[2],
@@ -151,10 +151,9 @@ const ChartComponent = ({ names, x1, y1, x2, y2 }) => {
         chartInstanceRef.current.update();
     };
 
-    const changeEasing = (newEasing) => {
-        setEasingName(newEasing);
-        restartAnims();
-    };
+    useEffect(() => {
+        restartAnims()
+    }, [reload])
 
     return (
         <canvas ref={chartRef}></canvas>
