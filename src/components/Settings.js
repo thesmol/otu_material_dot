@@ -5,8 +5,8 @@ const Settings = ({ chartType, setChartType, setStartChart }) => {
         setChartType(event.target.value);
     }
 
-    const handleChartShow = () => {
-        setStartChart(true);
+    const handleChartShow = (e) => {
+        setStartChart(prevStartChart => !prevStartChart);
     }
 
     return (
@@ -27,19 +27,19 @@ const Settings = ({ chartType, setChartType, setStartChart }) => {
             </h2>
 
             <h3>
-                Метод управления
+                Метод управления:
             </h3>
 
             <label style={{ marginBottom: '20px' }}>
-                <input
+                {/* <input
                     type="radio"
                     value="os"
                     checked = {chartType === 'os'}
                     onChange={handleTypeChange}
-                />
+                /> */}
                 Обратная связь
             </label>
-            <label>
+            {/* <label>
                 <input
                     type="radio"
                     value="pu"
@@ -47,9 +47,7 @@ const Settings = ({ chartType, setChartType, setStartChart }) => {
                     onChange={handleTypeChange}
                 />
                 Программное управление
-            </label>
-
-
+            </label> */}
 
             <button
                 style={{
