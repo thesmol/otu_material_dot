@@ -3,9 +3,9 @@ const t1 = 15;
 const x0 = -5;
 const x1 = -5;
 const x2 = 5;
-const v0 = 5;
+const v0 = -5;
 //const n_u = 10;
-const eps = 0.2;
+const eps = 0.05;
 const length = 499;
 const h = (t1 - t0) / length;
 
