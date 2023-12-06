@@ -65,7 +65,7 @@ const Settings = ({ chartType, setChartType, setStartChart }) => {
                 }}
                 onClick={handleChartShow}
             >
-                Запустить
+                Перезапустить
             </button>
         </div>
     )
