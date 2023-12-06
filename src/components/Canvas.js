@@ -63,6 +63,7 @@ const Canvas = ({ chartData, startChart }) => {
                     y1={chartData.v}
                     x2={chartData.xExt}
                     y2={chartData.LL}
+                    reload={startChart}
                 />
             </div>
 
