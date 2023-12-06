@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
 import { easingEffects } from 'chart.js/helpers';
-import { chartData } from "../data";
 
 import {
     Chart,
@@ -24,7 +23,7 @@ Chart.register(
 );
 
 
-const ChartComponent = () => {
+const ChartComponent = ({ names, x1, y1, x2, y2 }) => {
     const chartRef = useRef(null);
     const chartInstanceRef = useRef(null);
     const [data, setData] = useState([]);
@@ -32,24 +31,37 @@ const ChartComponent = () => {
     const [easingName, setEasingName] = useState('easeOutQuad');
 
     useEffect(() => {
-        let newData = chartData.x.map((x, i) => {
-            return {x: x, y: chartData.v[i]}
+        let newData = x1.map((x, i) => {
+            return { x: x, y: y1[i] }
         });
-        let newData2 = chartData.xExt.map((x, i) => {
-            return {x: x, y: chartData.LL[i]}
-        });
-
-        // let prev = 100;
-        // let prev2 = 80;
-        // for (let i = 0; i < 1000; i++) {
-        //     prev += 5 - Math.random() * 10;
-        //     newData.push({ x: i, y: prev });
-        //     prev2 += 5 - Math.random() * 10;
-        //     newData2.push({ x: i, y: prev2 });
-        // }
+        if (x2 && y2) {
+            let newData2 = x2.map((x, i) => {
+                return { x: x, y: y2[i] }
+            });
+            setData2(newData2);
+        }
+        
         setData(newData);
-        setData2(newData2);
     }, []);
+
+    let datasets = [{
+        label: names[1],
+        borderColor: '#83a601',
+        borderWidth: 3,
+        radius: 0,
+        data: data,
+    }];
+    
+    if (x2 && y2) {
+        datasets.push({
+            label: names[2],
+            borderColor: '#3b0c06',
+            borderWidth: 3,
+            radius: 0,
+            data: data2,
+            animation: false,
+        });
+    }
 
     useEffect(() => {
         const easing = easingEffects[easingName];
@@ -101,29 +113,20 @@ const ChartComponent = () => {
         chartInstanceRef.current = new Chart(ctx2, {
             type: 'line',
             data: {
-                datasets: [{
-                    borderColor: 'red',
-                    borderWidth: 1,
-                    radius: 0,
-                    data: data,
-                },
-                {
-                    borderColor: 'blue',
-                    borderWidth: 1,
-                    radius: 0,
-                    data: data2,
-                }]
+                datasets: datasets
             },
             options: {
+                maintainAspectRatio: false,
                 animation,
                 interaction: {
                     intersect: false
                 },
                 plugins: {
-                    legend: false,
+                    legend: true,
                     title: {
                         display: true,
-                        text: () => easingName
+                        text: names[0],
+                        color: '#2c1b09'
                     }
                 },
                 scales: {
@@ -154,9 +157,7 @@ const ChartComponent = () => {
     };
 
     return (
-        <div className="chart">
-            <canvas ref={chartRef}></canvas>
-        </div>
+        <canvas ref={chartRef}></canvas>
     );
 };
 
